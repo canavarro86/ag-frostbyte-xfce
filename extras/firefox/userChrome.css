@@ -1,0 +1,13 @@
+/* Frostbyte: macOS traffic-light buttons */
+.titlebar-buttonbox-container { padding-inline: 6px !important; }
+.titlebar-button { padding: 0 5px !important; background: transparent !important; }
+.titlebar-button > .toolbarbutton-icon {
+  list-style-image: none !important; width: 12px !important; height: 12px !important;
+  padding: 0 !important; border-radius: 50% !important; stroke: none !important; fill: none !important;
+}
+.titlebar-close   > .toolbarbutton-icon { background: #ff5f57 !important; }
+.titlebar-min     > .toolbarbutton-icon { background: #febc2e !important; }
+.titlebar-max     > .toolbarbutton-icon,
+.titlebar-restore > .toolbarbutton-icon { background: #28c840 !important; }
+.titlebar-button:hover > .toolbarbutton-icon { opacity: .8 !important; }
+:root:-moz-window-inactive .titlebar-button > .toolbarbutton-icon { background: #c8d2df !important; }

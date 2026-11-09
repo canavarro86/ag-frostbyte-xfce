@@ -59,9 +59,9 @@ W=$(ls "$DEST"/extras/snapshot/wallpaper.* 2>/dev/null | head -1)
 [ -n "$W" ] && for p in $(xfconf-query -c xfce4-desktop -l | grep last-image); do xfconf-query -c xfce4-desktop -p "$p" -s "$W"; done
 case ${1:-} in night|void|solar) "$DEST/extras/terminal/apply.sh" "frostbyte-$1";; light) "$DEST/extras/terminal/apply.sh" frostbyte;; esac
 
-for p in ~/.mozilla/firefox/*.default*/ ~/.config/mozilla/firefox/*.default*/; do
+for p in ~/.mozilla/firefox/*.default*/ ~/.config/mozilla/firefox/*.default*/ ~/.thunderbird/*.default*/ ~/.config/thunderbird/*.default*/; do
   [ -d "$p" ] || continue
-  grep -q non-native-titlebar "$p/user.js" 2>/dev/null || cat "$DEST/extras/firefox/user.js" >> "$p/user.js"
+  grep -q non-native-titlebar "$p/user.js" 2>/dev/null || cat "$DEST/extras/firefox/user.js" >> "$p/user.js"; mkdir -p "$p/chrome"; cp "$DEST/extras/firefox/userChrome.css" "$p/chrome/"
 done
 
 sed -i '/# >>> frostbyte >>>/,/# <<< frostbyte <<</d' ~/.bashrc

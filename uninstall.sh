@@ -2,8 +2,8 @@
 # Frostbyte: remove and restore previous desktop
 B=$HOME/.local/share/frostbyte-backup; X=$HOME/.config/xfce4/xfconf/xfce-perchannel-xml
 pkill -f frostbyte-layers; pkill -u "$USER" -f 'xprop -spy -root'; pkill -u "$USER" -x conky; pkill -x plank
-for p in ~/.mozilla/firefox/*/user.js ~/.config/mozilla/firefox/*/user.js; do
-  [ -f "$p" ] && sed -i '/non-native-titlebar-buttons\|browser.tabs.inTitlebar/d' "$p"
+for p in ~/.mozilla/firefox/*/user.js ~/.config/mozilla/firefox/*/user.js ~/.thunderbird/*/user.js ~/.config/thunderbird/*/user.js; do
+  [ -f "$p" ] && sed -i '/non-native-titlebar-buttons\|browser.tabs.inTitlebar\|legacyUserProfileCustomizations/d' "$p"
 done
 sed -i '/# >>> frostbyte >>>/,/# <<< frostbyte <<</d' ~/.bashrc
 rm -f ~/.local/bin/frostfetch ~/.local/bin/frostbyte-{layers,net,conky} ~/.config/autostart/frostbyte-*.desktop \

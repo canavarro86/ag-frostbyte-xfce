@@ -1,0 +1,12 @@
+[Scheme]
+Name=Frostbyte Void
+ColorForeground=#d4d8df
+ColorBackground=#0a0b0e
+ColorCursor=#39d0ff
+ColorCursorUseDefault=FALSE
+ColorBold=#ffffff
+ColorBoldUseDefault=FALSE
+ColorSelection=#1e3a52
+ColorSelectionUseDefault=FALSE
+TabActivityColor=#39d0ff
+ColorPalette=#15171c;#ff5c6c;#4ade80;#facc15;#3b9eff;#c084fc;#22d3ee;#a1a8b3;#3a3f4a;#ff8090;#86efac;#fde047;#7cc0ff;#d8b4fe;#67e8f9;#f3f4f6

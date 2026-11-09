@@ -1,0 +1,12 @@
+[Scheme]
+Name=Frostbyte Solar
+ColorForeground=#a7bcc0
+ColorBackground=#062b33
+ColorCursor=#e8b23a
+ColorCursorUseDefault=FALSE
+ColorBold=#e6dfcb
+ColorBoldUseDefault=FALSE
+ColorSelection=#0f4a57
+ColorSelectionUseDefault=FALSE
+TabActivityColor=#e8b23a
+ColorPalette=#0b3640;#dc4f3f;#8aa31a;#c9971a;#3a8fd6;#d4508a;#2ba89b;#e6dfcb;#2a5560;#f06a4f;#a6c23a;#e8b23a;#5aa9ee;#ea6fa4;#4cc4b6;#fbf6e6

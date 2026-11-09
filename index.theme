@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Frostbyte
+Comment=Light frosted hacker theme for XFCE
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Frostbyte
+MetacityTheme=Frostbyte
+IconTheme=WhiteSur
+CursorTheme=Adwaita
+ButtonLayout=close,minimize,maximize:

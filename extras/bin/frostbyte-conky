@@ -1,0 +1,7 @@
+#!/bin/bash
+# Frostbyte: start conky with current default interface
+DIR=$(cd "$(dirname "$(readlink -f "$0")")/.." && pwd)
+IF=$(ip route show default 2>/dev/null | awk '{print $5; exit}'); IF=${IF:-lo}
+sed "s/@IF@/$IF/g" "$DIR/conky/frostbyte.conf" > "/tmp/frostbyte-conky.$UID.conf"
+pkill -f "frostbyte-conky.$UID.conf"; pkill -f 'conky.*frostbyte.conf'
+exec conky -q -c "/tmp/frostbyte-conky.$UID.conf"

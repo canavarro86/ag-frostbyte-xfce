@@ -1,0 +1,12 @@
+[Scheme]
+Name=Frostbyte Night
+ColorForeground=#c9d6e8
+ColorBackground=#0f1724
+ColorCursor=#5b8ff0
+ColorCursorUseDefault=FALSE
+ColorBold=#e8f0fb
+ColorBoldUseDefault=FALSE
+ColorSelection=#24406e
+ColorSelectionUseDefault=FALSE
+TabActivityColor=#5b8ff0
+ColorPalette=#1a2436;#e05563;#3fbf8a;#e0a84a;#5b8ff0;#9b82f0;#38bdd6;#9fb0c8;#3a4a63;#ff7a85;#5fd9a4;#f2c46e;#82abff;#b9a5ff;#6fd6ea;#e8f0fb

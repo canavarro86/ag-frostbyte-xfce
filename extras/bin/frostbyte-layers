@@ -1,0 +1,35 @@
+#!/bin/bash
+# Frostbyte: window opacity by layer
+# FB_ACTIVE=100  FB_LAYERS="85"
+exec 9>"/tmp/frostbyte-layers.$UID"; flock -n 9 || exit 0
+ACTIVE=${FB_ACTIVE:-100}
+STEPS=(${FB_LAYERS:-85})
+wins() { xprop -root _NET_CLIENT_LIST_STACKING | cut -d'#' -f2 | tr -d ',' | tr ' ' '\n' | tac | grep .; }
+setop() { xprop -id "$1" -f _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY $(( $2 * 4294967295 / 100 )) 2>/dev/null; }
+reset() { for w in $(wins); do xprop -id "$w" -remove _NET_WM_WINDOW_OPACITY 2>/dev/null; done; exit 0; }
+trap reset INT TERM HUP
+active() {
+  local a; a=$(xprop -root _NET_ACTIVE_WINDOW | awk '{print $NF}')
+  [[ -z $a || $a == 0x0 ]] && a=$(xdotool getwindowfocus 2>/dev/null)
+  echo "${a:-0}"
+}
+apply() {
+  local act=$1 w t p i=0 n=() found=0
+  for w in $(wins); do
+    t=$(xprop -id "$w" _NET_WM_WINDOW_TYPE 2>/dev/null)
+    [[ $t == *NORMAL* || $t == *DIALOG* || $t == *"not found"* ]] || continue
+    xprop -id "$w" _NET_WM_STATE 2>/dev/null | grep -q HIDDEN && continue
+    n+=("$w"); (( w == act )) && found=1
+  done
+  (( found )) || act=${n[0]:-0}
+  for w in "${n[@]}"; do
+    if (( w == act )); then p=$ACTIVE; else p=${STEPS[i]:-${STEPS[-1]}}; ((i++)); fi
+    setop "$w" "$p"
+  done
+}
+last=; changed=1
+while :; do
+  read -r -t 0.4 _ <&3 && changed=1
+  a=$(active)
+  if [[ -n $changed || $a != "$last" ]]; then apply "$a"; last=$a; changed=; fi
+done 3< <(exec 9>&-; xprop -spy -root _NET_CLIENT_LIST_STACKING)

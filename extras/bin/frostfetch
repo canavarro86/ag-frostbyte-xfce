@@ -1,0 +1,12 @@
+#!/bin/bash
+B='\e[1;34m'; C='\e[36m'; R='\e[0m'
+os=$(. /etc/os-release; echo "$PRETTY_NAME")
+th=$(xfconf-query -c xsettings -p /Net/ThemeName 2>/dev/null)
+mem=$(free -h | awk '/^Mem/{print $3" / "$2}')
+up=$(uptime -p | sed 's/^up //')
+ip=$(curl -s -m 3 --socks5-hostname 127.0.0.1:1090 ifconfig.me 2>/dev/null); ip=${ip:-нет туннеля}
+art=("      ◢◣      " "    ◢◤  ◥◣    " "  ◢◤  ◆   ◥◣  " "  ◥◣      ◢◤  " "    ◥◣  ◢◤    " "      ◥◤      " "              " "              ")
+inf=("${B}$USER${R}@${B}$(hostname)${R}" "───────────────" "${C}os${R}     $os" "${C}de${R}     ${XDG_CURRENT_DESKTOP:-?} · xfwm4" "${C}theme${R}  $th" "${C}mem${R}    $mem" "${C}up${R}     $up" "${C}exit${R}   $ip")
+echo
+for i in "${!art[@]}"; do printf "  ${B}%s${R}  %b\n" "${art[$i]}" "${inf[$i]}"; done
+printf "                  "; for c in 0 1 2 3 4 5 6 7; do printf "\e[4${c}m   "; done; printf "${R}\n\n"

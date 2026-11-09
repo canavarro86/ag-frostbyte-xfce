@@ -1,0 +1,44 @@
+#!/bin/bash
+# Frostbyte: network info for conky
+IF=${FB_IF:-$(ip route show default 2>/dev/null | awk '{print $5; exit}')}
+L() { printf '${color2}%s${alignr}${color}%s\n' "$1" "$2"; }
+case $1 in
+info)
+  [ -z "$IF" ] && { echo '${color5}нет сети'; exit; }
+  if [ -d /sys/class/net/$IF/wireless ]; then
+    L iface "$IF · Wi-Fi"
+    s=$(/usr/sbin/iw dev "$IF" link 2>/dev/null)
+    L ssid "$(awk -F': ' '/SSID/{print $2}' <<<"$s")"
+    L link "$(awk '/tx bitrate/{print $3" "$4}' <<<"$s")"
+    L signal "$(awk '/signal/{print $2" dBm"}' <<<"$s")"
+  else
+    sp=$(cat /sys/class/net/$IF/speed 2>/dev/null)
+    L iface "$IF · Ethernet"
+    L link "${sp:-?} Mb/s"
+  fi
+  L "local ip" "$(ip -4 -o addr show "$IF" | awk '{print $4}' | cut -d/ -f1 | head -1)"
+  L gateway "$(ip route show default | awk '{print $3; exit}')"
+  ;;
+tunnels)
+  n=0
+  while read -r pid args; do
+    host=$(awk '{print $NF}' <<<"$args")
+    for f in D L R; do
+      for p in $(grep -oE -- "-$f ?[^ ]+" <<<"$args" | sed -E "s/-$f ?//"); do
+        case $f in D) t="socks :${p##*:}";; L) t="L ${p}";; R) t="R ${p}";; esac
+        printf '${color4}●${color} ssh %s${alignr}%s\n' "$host" "$t"; n=1
+      done
+    done
+  done < <(pgrep -a -x ssh | grep -E -- ' -[DLR]')
+  for i in $(ip -o link show | awk -F': ' '{print $2}' | cut -d@ -f1 | grep -E '^(wg|tun|tap|ppp|tailscale|zt)'); do
+    printf '${color4}●${color} %s${alignr}%s\n' "$i" "$(ip -4 -o addr show "$i" | awk '{print $4}' | head -1)"; n=1
+  done
+  [ $n = 0 ] && echo '${color5}○ нет туннелей'
+  ;;
+exit)
+  if ss -ltn 'sport = :1090' | grep -q LISTEN; then
+    curl -s -m 5 --socks5-hostname 127.0.0.1:1090 https://ifconfig.me || echo '—'
+  else echo '—'; fi
+  ;;
+real) curl -4 -s -m 5 https://ifconfig.me || echo '—' ;;
+esac

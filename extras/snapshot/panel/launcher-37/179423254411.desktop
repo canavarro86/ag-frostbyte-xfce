@@ -1,0 +1,18 @@
+[Desktop Entry]
+Version=1.0
+Name[ru]=Просмотр изображений Ristretto
+Name=Ristretto Image Viewer
+Comment[ru]=Просмотр фотографий — это просто
+Comment=Look at your images easily
+GenericName[ru]=Просмотр изображений
+GenericName=Image Viewer
+Exec=ristretto %U
+Icon=org.xfce.ristretto
+Terminal=false
+Type=Application
+X-MultipleArgs=false
+Categories=GTK;Graphics;Viewer;
+Keywords=image;photo;picture;viewer;graphics;
+StartupNotify=true
+MimeType=image/png;image/gif;image/jpeg;image/bmp;image/x-pixmap;image/tiff;image/svg+xml;image/x-xpixmap;image/webp;
+X-XFCE-Source=file:///usr/share/applications/org.xfce.ristretto.desktop

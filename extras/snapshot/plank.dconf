@@ -2,7 +2,7 @@
 alignment='center'
 dock-items=['xfce4-terminal.dockitem', 'thunar.dockitem', 'firefox-esr.dockitem', 'chromium.dockitem']
 hide-delay=50
-hide-mode='intelligent'
+hide-mode='auto'
 icon-size=44
 position='bottom'
 show-dock-item=false

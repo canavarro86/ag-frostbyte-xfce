@@ -10,7 +10,7 @@
       <property name="position" type="string" value="p=6;x=0;y=0"/>
       <property name="length" type="uint" value="100"/>
       <property name="position-locked" type="bool" value="true"/>
-      <property name="icon-size" type="uint" value="16"/>
+      <property name="icon-size" type="uint" value="22"/>
       <property name="size" type="uint" value="42"/>
       <property name="plugin-ids" type="array">
         <value type="int" value="1"/>
@@ -20,10 +20,11 @@
         <value type="int" value="5"/>
         <value type="int" value="6"/>
         <value type="int" value="7"/>
-        <value type="int" value="8"/>
-        <value type="int" value="9"/>
-        <value type="int" value="10"/>
+        <value type="int" value="40"/>
         <value type="int" value="27"/>
+        <value type="int" value="8"/>
+        <value type="int" value="10"/>
+        <value type="int" value="9"/>
       </property>
       <property name="background-style" type="uint" value="1"/>
       <property name="background-rgba" type="array">
@@ -56,6 +57,18 @@
         <value type="int" value="23"/>
         <value type="int" value="17"/>
         <value type="int" value="16"/>
+        <value type="int" value="28"/>
+        <value type="int" value="20"/>
+        <value type="int" value="29"/>
+        <value type="int" value="32"/>
+        <value type="int" value="30"/>
+        <value type="int" value="31"/>
+        <value type="int" value="33"/>
+        <value type="int" value="34"/>
+        <value type="int" value="35"/>
+        <value type="int" value="36"/>
+        <value type="int" value="37"/>
+        <value type="int" value="38"/>
       </property>
       <property name="nrows" type="uint" value="6"/>
       <property name="length-adjust" type="bool" value="true"/>
@@ -147,5 +160,60 @@
     </property>
     <property name="plugin-26" type="string" value="battery"/>
     <property name="plugin-27" type="string" value="xkb"/>
+    <property name="plugin-20" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="17942322163.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-28" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="17942321911.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-29" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="17942323134.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-30" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="17942323716.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-31" type="string" value="separator"/>
+    <property name="plugin-32" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="17942323505.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-33" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="17942323867.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-34" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="17942324038.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-35" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="17942324499.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-36" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="179423251910.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-37" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="179423254411.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-38" type="string" value="launcher"/>
+    <property name="plugin-40" type="string" value="pulseaudio">
+      <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
+    </property>
   </property>
 </channel>

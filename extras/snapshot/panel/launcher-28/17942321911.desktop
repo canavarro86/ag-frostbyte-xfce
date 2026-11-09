@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Civilisation V
+Comment=Play this game
+Path=@HOME@/games/civ/Civilisation5/Civilisation5/
+Exec=@HOME@/games/civ/Civilisation5/Civilisation5//Civ5XP
+Icon=@HOME@/games/civ/Civilisation5/Civilisation5/Civ5.png
+Terminal=false
+Type=Application
+Categories=Game;
+X-XFCE-Source=file://@HOME@/.local/share/applications/Civ5.desktop
